@@ -8,7 +8,7 @@ documented in the [upstream README](README.upstream.md) applies to this fork.
 
 ## Why this fork exists
 
-EpiCollect5 renders the ring loader natively above the WebView during question
+Epicollect5 renders the ring loader natively above the WebView during question
 navigation, so the spinner keeps animating while the WebView renders the next
 question (a multi-second synchronous mount that would freeze a CSS spinner).
 The loader is shown fully transparent — no card, no scrim — and must look
@@ -74,7 +74,7 @@ or in `package.json`:
 
 ## Usage
 
-Same API as upstream. This is how EpiCollect5 shows it (native builds only):
+Same API as upstream. This is how Epicollect5 shows it (native builds only):
 
 ```ts
 import { NativeLoader } from '@epicollect5/capacitor-native-loader';
