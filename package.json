@@ -18,7 +18,10 @@
   ],
   "author": "Martin Donadieu <martin@capgo.app>",
   "license": "MPL-2.0",
-  "repository": "[object Object]",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/epicollect5/epicollect5-native-loader.git"
+  },
   "bugs": {
     "url": "https://github.com/Cap-go/capacitor-native-loader/issues"
   },
