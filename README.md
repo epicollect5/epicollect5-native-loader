@@ -1,7 +1,7 @@
 # @epicollect5/capacitor-native-loader
 
 A maintained fork of [Cap-go/capacitor-native-loader](https://github.com/Cap-go/capacitor-native-loader)
-(v8.1.14) used by [EpiCollect5](https://github.com/epicollect5).
+(v8.1.14) used by [Epicollect5](https://github.com/epicollect5).
 
 **The JavaScript API is unchanged** — every option, method and behaviour
 documented in the [upstream README](README.upstream.md) applies to this fork.
