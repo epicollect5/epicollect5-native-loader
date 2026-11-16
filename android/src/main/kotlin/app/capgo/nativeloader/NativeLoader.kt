@@ -379,7 +379,6 @@ class NativeLoaderOverlay(private val activity: Activity) {
             shape = GradientDrawable.RECTANGLE
             cornerRadius = dp(item.cornerRadius).toFloat()
             setColor(item.backgroundColor ?: Color.argb(174, 10, 12, 18))
-            setStroke(1, Color.argb(24, 255, 255, 255))
         }
         card.setTag(R.id.native_loader_hit_view, true)
 
@@ -531,7 +530,8 @@ class NativeLoaderGraphicView(context: Context, private val item: LoaderItem) : 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val strokePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.STROKE
-        strokeCap = Paint.Cap.ROUND
+        //SVG default cap (the CSS crescent sets no stroke-linecap)
+        strokeCap = Paint.Cap.BUTT
     }
     private val startTime = System.currentTimeMillis()
     private val tick = object : Runnable {
@@ -655,11 +655,18 @@ class NativeLoaderGraphicView(context: Context, private val item: LoaderItem) : 
         val inset = item.thicknessPx(context)
         val rect = RectF(inset, inset, width - inset, height - inset)
         strokePaint.strokeWidth = item.thicknessPx(context)
-        strokePaint.color = withAlpha(item.colors[0], 36)
-        canvas.drawOval(rect, strokePaint)
+        //match the Ionic crescent spinner: a single-colour arc (~28% of the
+        //circle — dasharray 128px minus dashoffset 82px over a 163px
+        //circumference) rotating one full turn per 750ms — the crescent sets
+        //an inline animation-duration that overrides the stylesheet's 1s, so
+        //480°/s is its real speed. Decoupled from item.duration/speed so the
+        //CSS and native spinners always match. The colour assignment also
+        //resets the paint alpha the shader would otherwise inherit
+        strokePaint.color = item.colors[0]
         strokePaint.shader = SweepGradient(width / 2f, height / 2f, item.colors, null)
-        val sweep = ((item.progress ?: 0.72) * 360).toFloat()
-        val start = if (item.progress == null) (time * 180).toFloat() else -90f
+        val sweep = ((item.progress ?: 0.28) * 360).toFloat()
+        val seconds = (System.currentTimeMillis() - startTime) / 1000.0
+        val start = if (item.progress == null) (seconds * 480).toFloat() else -90f
         canvas.drawArc(rect, start, sweep, false, strokePaint)
         strokePaint.shader = null
     }

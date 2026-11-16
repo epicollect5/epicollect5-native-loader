@@ -597,8 +597,6 @@ struct LoaderCardView: View {
     private var cardBackground: some View {
         ZStack {
             (item.backgroundColor ?? Color.black.opacity(0.68))
-            RoundedRectangle(cornerRadius: item.cornerRadius, style: .continuous)
-                .stroke(Color.white.opacity(0.08), lineWidth: 1)
         }
     }
 }
@@ -903,17 +901,20 @@ struct RingLoader: View {
 
     var body: some View {
         TimelineView(.animation) { context in
-            let time = animationTime(context.date, item: item, reduceMotion: reduceMotion)
             ZStack {
+                //match the Ionic crescent spinner: a single-colour arc (~28%
+                //of the circle) rotating one full turn per 750ms — the
+                //crescent's inline animation-duration overrides the
+                //stylesheet's 1s, so 480°/s is its real speed. Decoupled from
+                //item.duration/speed so the CSS and native spinners always
+                //match, butt caps
                 Circle()
-                    .stroke(item.colors[0].opacity(0.14), lineWidth: item.thickness)
-                Circle()
-                    .trim(from: 0, to: CGFloat(item.progress ?? 0.72))
+                    .trim(from: 0, to: CGFloat(item.progress ?? 0.28))
                     .stroke(
                         AngularGradient(colors: item.colors, center: .center),
-                        style: StrokeStyle(lineWidth: item.thickness, lineCap: .round)
+                        style: StrokeStyle(lineWidth: item.thickness, lineCap: .butt)
                     )
-                    .rotationEffect(.degrees(item.progress == nil ? time * 180 : -90))
+                    .rotationEffect(.degrees(item.progress == nil ? context.date.timeIntervalSinceReferenceDate * 480 : -90))
             }
             .padding(item.thickness)
         }

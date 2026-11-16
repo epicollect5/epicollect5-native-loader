@@ -1,6 +1,6 @@
 {
-  "name": "@capgo/capacitor-native-loader",
-  "version": "8.1.14",
+  "name": "@epicollect5/capacitor-native-loader",
+  "version": "8.1.14-ec5.1",
   "description": "Capacitor plugin for native animated loaders, fullscreen overlays, Lottie assets, and WebView resizing.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -18,10 +18,7 @@
   ],
   "author": "Martin Donadieu <martin@capgo.app>",
   "license": "MPL-2.0",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Cap-go/capacitor-native-loader.git"
-  },
+  "repository": "[object Object]",
   "bugs": {
     "url": "https://github.com/Cap-go/capacitor-native-loader/issues"
   },
