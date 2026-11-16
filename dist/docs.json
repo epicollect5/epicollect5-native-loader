@@ -1,0 +1,836 @@
+{
+  "api": {
+    "name": "NativeLoaderPlugin",
+    "slug": "nativeloaderplugin",
+    "docs": "Native loader controller.",
+    "tags": [],
+    "methods": [
+      {
+        "name": "configure",
+        "signature": "(options: NativeLoaderConfigureOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "NativeLoaderConfigureOptions"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Configure defaults used by future `show` calls.",
+        "complexTypes": [
+          "NativeLoaderConfigureOptions"
+        ],
+        "slug": "configure"
+      },
+      {
+        "name": "show",
+        "signature": "(options?: NativeLoaderShowOptions | undefined) => Promise<NativeLoaderShowResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "NativeLoaderShowOptions | undefined"
+          }
+        ],
+        "returns": "Promise<NativeLoaderShowResult>",
+        "tags": [],
+        "docs": "Show a native loader.",
+        "complexTypes": [
+          "NativeLoaderShowResult",
+          "NativeLoaderShowOptions"
+        ],
+        "slug": "show"
+      },
+      {
+        "name": "update",
+        "signature": "(options: NativeLoaderUpdateOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "NativeLoaderUpdateOptions"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Update an existing native loader.",
+        "complexTypes": [
+          "NativeLoaderUpdateOptions"
+        ],
+        "slug": "update"
+      },
+      {
+        "name": "setProgress",
+        "signature": "(options: NativeLoaderProgressOptions) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "NativeLoaderProgressOptions"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Update determinate progress for a visible loader.",
+        "complexTypes": [
+          "NativeLoaderProgressOptions"
+        ],
+        "slug": "setprogress"
+      },
+      {
+        "name": "hide",
+        "signature": "(options?: NativeLoaderHideOptions | undefined) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "NativeLoaderHideOptions | undefined"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Hide one loader.",
+        "complexTypes": [
+          "NativeLoaderHideOptions"
+        ],
+        "slug": "hide"
+      },
+      {
+        "name": "hideAll",
+        "signature": "(options?: NativeLoaderHideOptions | undefined) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "NativeLoaderHideOptions | undefined"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Hide every visible loader.",
+        "complexTypes": [
+          "NativeLoaderHideOptions"
+        ],
+        "slug": "hideall"
+      },
+      {
+        "name": "setWebViewLayout",
+        "signature": "(options: NativeLoaderWebViewLayout) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "NativeLoaderWebViewLayout"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Apply a native WebView layout change without showing a loader.",
+        "complexTypes": [
+          "NativeLoaderWebViewLayout"
+        ],
+        "slug": "setwebviewlayout"
+      },
+      {
+        "name": "resetWebViewLayout",
+        "signature": "(options?: { animated?: boolean | undefined; } | undefined) => Promise<void>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "{ animated?: boolean | undefined; } | undefined"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "Restore the WebView layout captured before `setWebViewLayout` or `show`.",
+        "complexTypes": [],
+        "slug": "resetwebviewlayout"
+      },
+      {
+        "name": "getState",
+        "signature": "() => Promise<NativeLoaderStateResult>",
+        "parameters": [],
+        "returns": "Promise<NativeLoaderStateResult>",
+        "tags": [],
+        "docs": "Read current loader state.",
+        "complexTypes": [
+          "NativeLoaderStateResult"
+        ],
+        "slug": "getstate"
+      },
+      {
+        "name": "getPluginVersion",
+        "signature": "() => Promise<PluginVersionResult>",
+        "parameters": [],
+        "returns": "Promise<PluginVersionResult>",
+        "tags": [],
+        "docs": "Returns the platform implementation version marker.",
+        "complexTypes": [
+          "PluginVersionResult"
+        ],
+        "slug": "getpluginversion"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "NativeLoaderConfigureOptions",
+      "slug": "nativeloaderconfigureoptions",
+      "docs": "Global defaults applied to future `show` calls.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "defaults",
+          "tags": [],
+          "docs": "Default show options.",
+          "complexTypes": [
+            "NativeLoaderShowOptions"
+          ],
+          "type": "NativeLoaderShowOptions"
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderShowOptions",
+      "slug": "nativeloadershowoptions",
+      "docs": "Loader display options.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "id",
+          "tags": [],
+          "docs": "Stable loader id. A generated id is returned when omitted.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "style",
+          "tags": [],
+          "docs": "Built-in style or asset renderer. Defaults to `siri`.",
+          "complexTypes": [
+            "NativeLoaderStyle"
+          ],
+          "type": "NativeLoaderStyle"
+        },
+        {
+          "name": "placement",
+          "tags": [],
+          "docs": "Native window placement. Defaults to `center`.",
+          "complexTypes": [
+            "NativeLoaderPlacement"
+          ],
+          "type": "NativeLoaderPlacement"
+        },
+        {
+          "name": "frame",
+          "tags": [],
+          "docs": "Custom frame used when `placement` is `custom`.",
+          "complexTypes": [
+            "NativeLoaderFrame"
+          ],
+          "type": "NativeLoaderFrame"
+        },
+        {
+          "name": "message",
+          "tags": [],
+          "docs": "Optional loading message shown below or near the loader.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "size",
+          "tags": [],
+          "docs": "Loader size in points / CSS pixels. Defaults to `96`.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "thickness",
+          "tags": [],
+          "docs": "Thickness for ring, edge, and progress loaders. Defaults to `5`.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "duration",
+          "tags": [],
+          "docs": "Animation duration in milliseconds for one cycle. Defaults vary by style.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "speed",
+          "tags": [],
+          "docs": "Animation speed multiplier. Defaults to `1`.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "progress",
+          "tags": [],
+          "docs": "Determinate progress from `0` to `1`. Omit for indeterminate loaders.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "colors",
+          "tags": [],
+          "docs": "Loader colors. Built-in loaders use the first colors as gradient stops.",
+          "complexTypes": [],
+          "type": "string[] | undefined"
+        },
+        {
+          "name": "backgroundColor",
+          "tags": [],
+          "docs": "Container background color.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "scrimColor",
+          "tags": [],
+          "docs": "Fullscreen scrim color. Used by `fullscreen` and `around` placements when set.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "cornerRadius",
+          "tags": [],
+          "docs": "Corner radius for the floating container. Defaults to `24`.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "blurRadius",
+          "tags": [],
+          "docs": "Native blur radius where supported. Defaults to `0`.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "autoHide",
+          "tags": [],
+          "docs": "Hide automatically after this many milliseconds.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "interactionMode",
+          "tags": [],
+          "docs": "Touch handling for the overlay. Defaults to `passThrough` unless `scrimColor` is set.",
+          "complexTypes": [
+            "NativeLoaderInteractionMode"
+          ],
+          "type": "NativeLoaderInteractionMode"
+        },
+        {
+          "name": "reducedMotion",
+          "tags": [],
+          "docs": "Reduced motion behavior. Defaults to `system`.",
+          "complexTypes": [
+            "NativeLoaderReducedMotionMode"
+          ],
+          "type": "NativeLoaderReducedMotionMode"
+        },
+        {
+          "name": "accessibilityLabel",
+          "tags": [],
+          "docs": "Accessibility label announced when the loader appears.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "asset",
+          "tags": [],
+          "docs": "Asset configuration for `lottie` and `image` loaders.",
+          "complexTypes": [
+            "NativeLoaderAsset"
+          ],
+          "type": "NativeLoaderAsset"
+        },
+        {
+          "name": "webView",
+          "tags": [],
+          "docs": "Optional native WebView layout mutation while the loader is visible.",
+          "complexTypes": [
+            "NativeLoaderWebViewLayout"
+          ],
+          "type": "NativeLoaderWebViewLayout"
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderFrame",
+      "slug": "nativeloaderframe",
+      "docs": "Absolute frame in CSS pixels / device-independent points.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "x",
+          "tags": [],
+          "docs": "Left offset.",
+          "complexTypes": [],
+          "type": "number"
+        },
+        {
+          "name": "y",
+          "tags": [],
+          "docs": "Top offset.",
+          "complexTypes": [],
+          "type": "number"
+        },
+        {
+          "name": "width",
+          "tags": [],
+          "docs": "Frame width.",
+          "complexTypes": [],
+          "type": "number"
+        },
+        {
+          "name": "height",
+          "tags": [],
+          "docs": "Frame height.",
+          "complexTypes": [],
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderAsset",
+      "slug": "nativeloaderasset",
+      "docs": "Native file, bundled asset, remote URL, or data URL used by `lottie` and `image` loaders.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "source",
+          "tags": [],
+          "docs": "Asset path or URL.\n\nSupported forms:\n- app bundle asset name, for example `loader.json`\n- `file://` URL\n- `https://` or `http://` URL\n- `data:application/json;base64,...` for Lottie JSON\n- `data:image/...;base64,...` for images",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "tags": [],
+          "docs": "Explicit asset type. Defaults to the current loader `style`.",
+          "complexTypes": [
+            "NativeLoaderAssetType"
+          ],
+          "type": "NativeLoaderAssetType"
+        },
+        {
+          "name": "loop",
+          "tags": [],
+          "docs": "Repeat asset animation. Defaults to `true`.\n\nLottie assets loop their composition. Image assets loop their native rotation.",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        },
+        {
+          "name": "speed",
+          "tags": [],
+          "docs": "Asset animation speed multiplier. Defaults to `1`.\n\nApplies to Lottie playback speed and image rotation speed.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "autoPlay",
+          "tags": [],
+          "docs": "Start asset animation immediately. Defaults to `true`.\n\nFor image assets, this starts the native rotation loader.",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderWebViewLayout",
+      "slug": "nativeloaderwebviewlayout",
+      "docs": "Native WebView layout mutation.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "mode",
+          "tags": [],
+          "docs": "Layout mode.\n\n`resize` changes the native WebView frame/margins. `inset` changes scroll\ncontent inset/padding where the platform supports it. `none` leaves the\nWebView untouched.",
+          "complexTypes": [
+            "NativeLoaderWebViewMode"
+          ],
+          "type": "NativeLoaderWebViewMode"
+        },
+        {
+          "name": "insets",
+          "tags": [],
+          "docs": "Insets applied in `resize` or `inset` mode.",
+          "complexTypes": [
+            "NativeLoaderInsets"
+          ],
+          "type": "NativeLoaderInsets"
+        },
+        {
+          "name": "frame",
+          "tags": [],
+          "docs": "Replace the WebView frame instead of using insets. Used only by iOS and\nby Android parents that support absolute layout params.",
+          "complexTypes": [
+            "NativeLoaderFrame"
+          ],
+          "type": "NativeLoaderFrame"
+        },
+        {
+          "name": "restoreOnHide",
+          "tags": [],
+          "docs": "Restore the previous WebView layout when the loader is hidden. Defaults to `true`.",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        },
+        {
+          "name": "animated",
+          "tags": [],
+          "docs": "Animate the layout change where the platform supports it. Defaults to `true`.",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderInsets",
+      "slug": "nativeloaderinsets",
+      "docs": "Insets in CSS pixels / device-independent points.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "top",
+          "tags": [],
+          "docs": "Top inset.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "right",
+          "tags": [],
+          "docs": "Right inset.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "bottom",
+          "tags": [],
+          "docs": "Bottom inset.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "left",
+          "tags": [],
+          "docs": "Left inset.",
+          "complexTypes": [],
+          "type": "number | undefined"
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderShowResult",
+      "slug": "nativeloadershowresult",
+      "docs": "Show result.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "id",
+          "tags": [],
+          "docs": "Loader id that can be passed to `update`, `setProgress`, or `hide`.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderUpdateOptions",
+      "slug": "nativeloaderupdateoptions",
+      "docs": "Update an existing loader. Any omitted property keeps its current value.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "id",
+          "tags": [],
+          "docs": "Loader id to update.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderProgressOptions",
+      "slug": "nativeloaderprogressoptions",
+      "docs": "Progress update options.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "id",
+          "tags": [],
+          "docs": "Loader id. When omitted, the top-most/current loader receives progress.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "progress",
+          "tags": [],
+          "docs": "Determinate progress from `0` to `1`.",
+          "complexTypes": [],
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderHideOptions",
+      "slug": "nativeloaderhideoptions",
+      "docs": "Hide options.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "id",
+          "tags": [],
+          "docs": "Loader id. When omitted, the top-most/current loader is hidden.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "animated",
+          "tags": [],
+          "docs": "Animate dismissal. Defaults to `true`.",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        },
+        {
+          "name": "restoreWebView",
+          "tags": [],
+          "docs": "Restore WebView layout immediately. Defaults to `true`.",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderStateResult",
+      "slug": "nativeloaderstateresult",
+      "docs": "Current loader state.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "showing",
+          "tags": [],
+          "docs": "Whether at least one loader is visible.",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "ids",
+          "tags": [],
+          "docs": "Visible loader ids from oldest to newest.",
+          "complexTypes": [],
+          "type": "string[]"
+        }
+      ]
+    },
+    {
+      "name": "PluginVersionResult",
+      "slug": "pluginversionresult",
+      "docs": "Plugin version payload.",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "version",
+          "tags": [],
+          "docs": "Version identifier returned by the platform implementation.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "typeAliases": [
+    {
+      "name": "NativeLoaderStyle",
+      "slug": "nativeloaderstyle",
+      "docs": "Built-in native loader renderer.\n\n- `siri`: blurred, rotating multi-orb loader inspired by assistant listening UI.\n- `siri-v2`: full-screen Siri-style color motion around the screen edge.\n- `chrome`: full-width top edge progress bar inspired by browser page loading UI.\n- `orbit`: dots orbiting a transparent center.\n- `ring`: rotating stroked ring.\n- `pulse`: expanding translucent ripples.\n- `dots`: three bouncing dots.\n- `bars`: equalizer-style vertical bars.\n- `wave`: flowing horizontal wave.\n- `halo`: glowing radial halo.\n- `lottie`: native Lottie JSON animation from `asset`.\n- `image`: native image view from `asset`, rotating when `autoPlay` is enabled.",
+      "types": [
+        {
+          "text": "'siri'",
+          "complexTypes": []
+        },
+        {
+          "text": "'siri-v2'",
+          "complexTypes": []
+        },
+        {
+          "text": "'chrome'",
+          "complexTypes": []
+        },
+        {
+          "text": "'orbit'",
+          "complexTypes": []
+        },
+        {
+          "text": "'ring'",
+          "complexTypes": []
+        },
+        {
+          "text": "'pulse'",
+          "complexTypes": []
+        },
+        {
+          "text": "'dots'",
+          "complexTypes": []
+        },
+        {
+          "text": "'bars'",
+          "complexTypes": []
+        },
+        {
+          "text": "'wave'",
+          "complexTypes": []
+        },
+        {
+          "text": "'halo'",
+          "complexTypes": []
+        },
+        {
+          "text": "'lottie'",
+          "complexTypes": []
+        },
+        {
+          "text": "'image'",
+          "complexTypes": []
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderPlacement",
+      "slug": "nativeloaderplacement",
+      "docs": "Where the loader is anchored in the native window.",
+      "types": [
+        {
+          "text": "'center'",
+          "complexTypes": []
+        },
+        {
+          "text": "'top'",
+          "complexTypes": []
+        },
+        {
+          "text": "'bottom'",
+          "complexTypes": []
+        },
+        {
+          "text": "'left'",
+          "complexTypes": []
+        },
+        {
+          "text": "'right'",
+          "complexTypes": []
+        },
+        {
+          "text": "'fullscreen'",
+          "complexTypes": []
+        },
+        {
+          "text": "'around'",
+          "complexTypes": []
+        },
+        {
+          "text": "'custom'",
+          "complexTypes": []
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderInteractionMode",
+      "slug": "nativeloaderinteractionmode",
+      "docs": "How the native overlay handles pointer/touch input while the loader is visible.",
+      "types": [
+        {
+          "text": "'passThrough'",
+          "complexTypes": []
+        },
+        {
+          "text": "'block'",
+          "complexTypes": []
+        },
+        {
+          "text": "'loaderOnly'",
+          "complexTypes": []
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderReducedMotionMode",
+      "slug": "nativeloaderreducedmotionmode",
+      "docs": "How platform reduced-motion settings affect animated loaders.",
+      "types": [
+        {
+          "text": "'system'",
+          "complexTypes": []
+        },
+        {
+          "text": "'pause'",
+          "complexTypes": []
+        },
+        {
+          "text": "'slow'",
+          "complexTypes": []
+        },
+        {
+          "text": "'ignore'",
+          "complexTypes": []
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderAssetType",
+      "slug": "nativeloaderassettype",
+      "docs": "Loader asset type.",
+      "types": [
+        {
+          "text": "'lottie'",
+          "complexTypes": []
+        },
+        {
+          "text": "'image'",
+          "complexTypes": []
+        }
+      ]
+    },
+    {
+      "name": "NativeLoaderWebViewMode",
+      "slug": "nativeloaderwebviewmode",
+      "docs": "How to alter the Capacitor WebView while a loader is visible.",
+      "types": [
+        {
+          "text": "'none'",
+          "complexTypes": []
+        },
+        {
+          "text": "'resize'",
+          "complexTypes": []
+        },
+        {
+          "text": "'inset'",
+          "complexTypes": []
+        }
+      ]
+    }
+  ],
+  "pluginConfigs": []
+}
