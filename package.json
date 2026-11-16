@@ -14,7 +14,7 @@
     "ios/Sources",
     "ios/Tests",
     "Package.swift",
-    "CapgoCapacitorNativeLoader.podspec"
+    "Epicollect5CapacitorNativeLoader.podspec"
   ],
   "author": "Martin Donadieu <martin@capgo.app>",
   "license": "MPL-2.0",
